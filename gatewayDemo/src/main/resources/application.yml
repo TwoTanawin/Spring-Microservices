@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: gatewayDemo
+  server:
+    port: 8082
+    cloud:
+      spring:
+        gateway:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: user-service
+              uri: http://localhost:8083
+              predicates:
+                - Path=/user/**
+            - id: order-service
+              uri: http://localhost:8084
+              predicates:
+                - Path=/order/**
+              filters:
+                - PrefixPath=/api
+          metrics:
+            enabled: true

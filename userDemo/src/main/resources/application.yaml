@@ -1,5 +1,6 @@
 spring:
   application:
     name: userDemo
-  server:
-    port: 8083
+
+server:
+  port: 8083
